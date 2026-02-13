@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // Pages
 import LoginPage from './pages/LoginPage';
-import DateVerifyPage from './pages/DateVerifyPage';
+
 import Act0 from './pages/Act0';
 import Act1 from './pages/Act1';
 import Act2 from './pages/Act2';
@@ -39,18 +39,14 @@ export const useNavigation = () => useContext(NavigationContext);
 // Main App Content
 function AppContent() {
   const [currentPage, setCurrentPage] = useState('login');
-  const { isAuthenticated, passwordVerified, dateVerified } = useAuth();
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     // Handle navigation based on auth state
-    if (currentPage === 'login') {
-      if (isAuthenticated) {
-        setCurrentPage('act0');
-      } else if (passwordVerified && !dateVerified) {
-        setCurrentPage('dateverify');
-      }
+    if (currentPage === 'login' && isAuthenticated) {
+      setCurrentPage('act0');
     }
-  }, [isAuthenticated, passwordVerified, dateVerified, currentPage]);
+  }, [isAuthenticated, currentPage]);
 
   const navigate = (page: string) => {
     setCurrentPage(page);
@@ -60,9 +56,7 @@ function AppContent() {
   const renderPage = () => {
     switch (currentPage) {
       case 'login':
-        return <LoginPage onNavigate={() => navigate('dateverify')} />;
-      case 'dateverify':
-        return <DateVerifyPage onNavigate={() => navigate('act0')} />;
+        return <LoginPage onNavigate={() => navigate('act0')} />;
       case 'act0':
         return <Act0 onNavigate={() => navigate('act1')} />;
       case 'act1':
@@ -86,7 +80,7 @@ function AppContent() {
       case 'act10':
         return <Act10 />;
       default:
-        return <LoginPage onNavigate={() => navigate('dateverify')} />;
+        return <LoginPage onNavigate={() => navigate('act0')} />;
     }
   };
 

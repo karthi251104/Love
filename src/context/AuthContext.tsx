@@ -47,7 +47,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       'april2323',
       '23april23'
     ];
-    
+
     if (validPatterns.some(pattern => normalized.includes(pattern))) {
       setDateVerified(true);
       localStorage.setItem('kn_date_auth', 'true');
@@ -63,16 +63,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     localStorage.removeItem('kn_date_auth');
   };
 
-  const isAuthenticated = passwordVerified && dateVerified;
+  const isAuthenticated = passwordVerified;
 
   return (
-    <AuthContext.Provider value={{ 
-      isAuthenticated, 
-      passwordVerified, 
-      dateVerified, 
-      verifyPassword, 
-      verifyDate, 
-      logout 
+    <AuthContext.Provider value={{
+      isAuthenticated,
+      passwordVerified,
+      dateVerified,
+      verifyPassword,
+      verifyDate,
+      logout
     }}>
       {children}
     </AuthContext.Provider>
