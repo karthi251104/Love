@@ -94,7 +94,7 @@ function AppContent() {
     <NavigationContext.Provider value={{ currentPage, navigate }}>
       <div className="relative min-h-screen" style={{ perspective: '1200px' }}>
         <FloatingHearts count={30} />
-        <BackgroundAudio audioSrc="/audio/love-song.mp3" />
+        <BackgroundAudio audioSrc={`${import.meta.env.BASE_URL}audio/love-song.mp3`} />
         <SparkleTrail />
         <AnimatePresence mode="wait">
           <motion.div

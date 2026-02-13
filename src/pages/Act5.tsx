@@ -6,31 +6,32 @@ interface Act5Props {
 }
 
 // Birthday images for November 25, 2025 - Birthday celebration
+const base = import.meta.env.BASE_URL;
 const birthdayImages = [
   {
     id: 1,
-    src: '/birthday/birthday-1.jpg',
+    src: `${base}birthday/birthday-1.jpg`,
 
     caption: 'The moment you surprised me'
   },
   {
     id: 2,
-    src: '/birthday/birthday-2.jpg',
+    src: `${base}birthday/birthday-2.jpg`,
     caption: 'Your beautiful smile'
   },
   {
     id: 3,
-    src: '/birthday/birthday-3.jpg',
+    src: `${base}birthday/birthday-3.jpg`,
     caption: 'Together forever'
   },
   {
     id: 4,
-    src: '/birthday/birthday-4.jpg',
+    src: `${base}birthday/birthday-4.jpg`,
     caption: 'My favorite person'
   },
   {
     id: 5,
-    src: '/birthday/birthday-5.jpg',
+    src: `${base}birthday/birthday-5.jpg`,
     caption: 'Our special celebration'
   }
 ];
@@ -171,7 +172,7 @@ const Act5 = ({ onNavigate }: Act5Props) => {
                     loop
                     playsInline
                   >
-                    <source src="/birthday/birthday-video-1.mp4" type="video/mp4" />
+                    <source src={`${base}birthday/birthday-video-1.mp4`} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </div>
@@ -209,7 +210,7 @@ const Act5 = ({ onNavigate }: Act5Props) => {
                     loop
                     playsInline
                   >
-                    <source src="/birthday/birthday-video-2.mp4" type="video/mp4" />
+                    <source src={`${base}birthday/birthday-video-2.mp4`} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </div>
